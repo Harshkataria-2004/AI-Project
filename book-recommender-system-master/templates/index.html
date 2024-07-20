@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .text-white {
+            color: white;
+        }
+        .card {
+            background-color: #343a40;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 380px;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+        .card-img-top {
+            border-radius: 10px 10px 0 0;
+            max-width: 100%;
+            height: auto;
+        }
+        .card-title {
+            text-transform: capitalize;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .navbar-custom {
+            background-color: #00a65a;
+        }
+        .navbar-custom .navbar-brand, 
+        .navbar-custom .nav > li > a {
+            color: white;
+        }
+        body {
+            background-color: #212529;
+            color: white;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">My Book Recommender</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/recommend">Recommend</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 style="font-size:50px; margin-top:20px;">Top 50 Books</h1>
+            </div>
+
+            {% for i in range(book_name|length) %}
+                <div class="col-md-3" style="margin-top:30px">
+                    <div class="card">
+                        <img class="card-img-top img-responsive" src="{{ image[i] }}" alt="{{ book_name[i] }}">
+                        <div class="card-body">
+                            <p class="card-title">{{ book_name[i] }}</p>
+                            <h4>{{ author[i] }}</h4>
+                            <h5>Votes - {{ votes[i] }}</h5>
+                            <h5>Rating - {{ rating[i] }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-J6qa4849blE2+poTKhLvv4CG7/zOnbs+tG1aZr05v72KPLGxGXAM4f5y4GNP9vP2" crossorigin="anonymous"></script>
+</body>
+</html>
